@@ -1,11 +1,6 @@
 name: CI Workflow
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-  workflow_dispatch:
+on: [push, pull_request]
 
 permissions:
   contents: read
@@ -17,32 +12,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v2
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '16'
+        node-version: '14'
 
-    - name: Install Dependencies
-      run: |
-        npm install puppeteer
-        npm install
+    - name: Install dependencies
+      run: npm install
 
-    - name: Run Tests
-      run: node tests.js
-
-    - name: Setup Pages
-      uses: actions/configure-pages@v2
-      if: success()
-
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v1
-      with:
-        path: '.'
-      if: success()
-
-    - name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v1
-      if: success()
+    - name: Run tests
+      run: npm test
