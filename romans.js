@@ -32,7 +32,7 @@ function init() {
 }
 
 function setupConversionFunctions() {
-    convertRomanToInteger = function (roman) {
+    window.convertRomanToInteger = function(roman) {
         let response = {
             value: 0,
             message: '',
@@ -79,7 +79,7 @@ function setupConversionFunctions() {
         return response;
     };
 
-    convertIntegerToRoman = function (num) {
+     window.convertIntegerToRoman = function(num) {
         let response = {
             value: '',
             message: '',
