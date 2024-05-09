@@ -21,22 +21,21 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-
-  test:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      # Runs a single command using the runners shell
-      - name: Set-up Node
-        uses: actions/setup-node@v1
-        with: 
-         node-version: '14.x'
-      - name: Install Dependencies
-        run: | 
-          npm install --save-dev node-qunit-phantomjs
-          npm install --save-dev qunit
-      - name: Test
-        run: node_modules/node-qunit-phantomjs/bin/node-qunit-phantomjs test.html 
+    - uses: actions/checkout@v3
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14' 
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: node node_modules/node-qunit-phantomjs/bin/node-qunit-phantomjs test.html
 
   deploy:
     environment:
