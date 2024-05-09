@@ -1,0 +1,21 @@
+{
+    "name": "romans-converter-tests",
+    "version": "1.0.0",
+    "description": "QUnit tests for a Romans Converter running in Puppeteer",
+    "main": "test.js",
+    "scripts": {
+      "test": "node test.js"
+    },
+    "keywords": [
+      "QUnit",
+      "Puppeteer",
+      "Testing"
+    ],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "puppeteer": "^10.0.0"
+    },
+    "devDependencies": {}
+  }
+  
