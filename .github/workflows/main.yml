@@ -1,8 +1,10 @@
-name: Deploy static content to GitHub Pages
+name: CI Workflow
 
 on:
   push:
-    branches: ["main"]
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -10,40 +12,37 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
         node-version: '14'
 
-    - name: Install dependencies
-      run: npm install
+    - name: Install Dependencies
+      run: |
+        npm install puppeteer
+        npm install
 
-    - name: Run tests
-      run: node node_modules/node-qunit-phantomjs/bin/node-qunit-phantomjs test.html
+    - name: Run Tests
+      run: node test.js
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build  # Corrected to 'build' instead of 'test'
-    steps:
-    - uses: actions/checkout@v3
     - name: Setup Pages
       uses: actions/configure-pages@v2
+      if: success()
+
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
       with:
         path: '.'
+      if: success()
+
     - name: Deploy to GitHub Pages
-      id: deployment
       uses: actions/deploy-pages@v1
+      if: success()
