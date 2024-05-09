@@ -221,3 +221,14 @@ function init() {
       return obj[1000].repeat(parseInt(num / 1000));
     }
   };
+
+if (typeof window !== "undefined") {
+    window.convertIntegerToRoman = convertIntegerToRoman;
+    window.convertRomanToInteger = convertRomanToInteger;
+} else if (typeof module !== "undefined") {
+    // Esto es para Node.js
+    module.exports = {
+        convertIntegerToRoman,
+        convertRomanToInteger
+    };
+}
