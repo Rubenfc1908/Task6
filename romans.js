@@ -133,14 +133,14 @@ function lessThan9(num, obj) {
     return obj[1] + obj[10];
   } else if (num >= 5 && num < 9) {
     result = obj[5];
-    for ( i = 0; i < num % 5; i++) {
+    for (var i = 0; i < num % 5; i++) {
       result += obj[1];
     }
     return result;
   } else if (num === 4) {
     return obj[1] + obj[5];
   } else {
-    for ( i = 0; i < num; i++) {
+    for (var i = 0; i < num; i++) {
       result += obj[1];
     }
     return result;
@@ -156,7 +156,7 @@ function greaterThan9(num, obj) {
     if (num === 40) {
       return obj[10] + obj[50];
     }
-    for (i = 0; i < parseInt(num / 10); i++) {
+    for (var i = 0; i < parseInt(num / 10); i++) {
       result += obj[10];
     }
     return result;
@@ -168,7 +168,7 @@ function greaterThan9(num, obj) {
       return obj[10] + obj[100];
     }
     result = obj[50];
-    for (i = 0; i < parseInt((num - 50) / 10); i++) {
+    for (var i = 0; i < parseInt((num - 50) / 10); i++) {
       result += obj[10];
     }
     return result;
@@ -179,7 +179,7 @@ function greaterThan9(num, obj) {
     if (num === 400) {
       return obj[100] + obj[500];
     }
-    for (i = 0; i < parseInt(num / 100); i++) {
+    for (var i = 0; i < parseInt(num / 100); i++) {
       result += obj[100];
     }
     return result;
@@ -191,7 +191,7 @@ function greaterThan9(num, obj) {
       return obj[100] + obj[1000];
     }
     result = obj[500];
-    for (i = 0; i < parseInt((num - 500) / 100); i++) {
+    for (var i = 0; i < parseInt((num - 500) / 100); i++) {
       result += obj[100];
     }
     return result;
@@ -199,7 +199,7 @@ function greaterThan9(num, obj) {
     if (num === 1000) {
       return obj[1000];
     }
-    for (i = 0; i < parseInt(num / 1000); i++) {
+    for (var i = 0; i < parseInt(num / 1000); i++) {
       result += obj[1000];
     }
     return result;
