@@ -4,11 +4,11 @@ var INVALID_INTEGER = 'Please enter a valid integer';
 var OUT_OF_RANGE = 'Out of range (1-3999)';
 
 function init() {
-  var modeCheckbox = document.querySelector("input[type='checkbox']");
+  var modeCheckbox = document.querySelector('input[type=\'checkbox\']');
   var header = document.querySelector('h1');
   var convertButton = document.querySelector('.convert-button');
   var outputArea = document.querySelector('.convert-output');
-  var inputArea = document.querySelector("input[type='text']");
+  var inputArea = document.querySelector('input[type=\'text\']');
 
   modeCheckbox.addEventListener('change', function(e) {
     header.innerHTML = getModeTitle(e.target.checked);
