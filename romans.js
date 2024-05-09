@@ -129,16 +129,25 @@ function convertIntegerToRoman(num) {
 }
 
 function lessThan9(num, obj) {
+    var result = '';
     if (num === 9) {
         return obj[1] + obj[10];
     } else if (num >= 5 && num < 9) {
-        return obj[5] + obj[1].repeat(num % 5);
+        result = obj[5];
+        for (var i = 0; i < num % 5; i++) {
+            result += obj[1];
+        }
+        return result;
     } else if (num === 4) {
         return obj[1] + obj[5];
     } else {
-        return obj[1].repeat(num);
+        for (var i = 0; i < num; i++) {
+            result += obj[1];
+        }
+        return result;
     }
 }
+
 
 function greaterThan9(num, obj) {
   var result = '';
