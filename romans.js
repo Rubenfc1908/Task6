@@ -141,42 +141,60 @@ function lessThan9(num, obj) {
 }
 
 function greaterThan9(num, obj) {
-    if (num >= 10 && num < 50) {
-        if (num === 10) {
-            return obj[10];
-        }
-        if (num === 40) {
-            return obj[10] + obj[50];
-        }
-        return obj[10].repeat(parseInt(num / 10));
-    } else if (num >= 50 && num < 100) {
-        if (num === 50) {
-            return obj[50];
-        }
-        if (num === 90) {
-            return obj[10] + obj[100];
-        }
-        return obj[50] + obj[10].repeat(parseInt((num - 50) / 10));
-    } else if (num >= 100 && num < 500) {
-        if (num === 100) {
-            return obj[100];
-        }
-        if (num === 400) {
-            return obj[100] + obj[500];
-        }
-        return obj[100].repeat(parseInt(num / 100));
-    } else if (num >= 500 && num < 1000) {
-        if (num === 500) {
-            return obj[500];
-        }
-        if (num === 900) {
-            return obj[100] + obj[1000];
-        }
-        return obj[500] + obj[100].repeat(parseInt(num - 500) / 100);
-    } else if (num >= 1000 && num < 5000) {
-        if (num === 1000) {
-            return obj[1000];
-        }
-        return obj[1000].repeat(parseInt(num / 1000));
-    }
+  var result = '';
+  if (num >= 10 && num < 50) {
+      if (num === 10) {
+          return obj[10];
+      }
+      if (num === 40) {
+          return obj[10] + obj[50];
+      }
+      for (var i = 0; i < parseInt(num / 10); i++) {
+          result += obj[10];
+      }
+      return result;
+  } else if (num >= 50 && num < 100) {
+      if (num === 50) {
+          return obj[50];
+      }
+      if (num === 90) {
+          return obj[10] + obj[100];
+      }
+      result = obj[50];
+      for (var i = 0; i < parseInt((num - 50) / 10); i++) {
+          result += obj[10];
+      }
+      return result;
+  } else if (num >= 100 && num < 500) {
+      if (num === 100) {
+          return obj[100];
+      }
+      if (num === 400) {
+          return obj[100] + obj[500];
+      }
+      for (var i = 0; i < parseInt(num / 100); i++) {
+          result += obj[100];
+      }
+      return result;
+  } else if (num >= 500 && num < 1000) {
+      if (num === 500) {
+          return obj[500];
+      }
+      if (num === 900) {
+          return obj[100] + obj[1000];
+      }
+      result = obj[500];
+      for (var i = 0; i < parseInt((num - 500) / 100); i++) {
+          result += obj[100];
+      }
+      return result;
+  } else if (num >= 1000 && num < 5000) {
+      if (num === 1000) {
+          return obj[1000];
+      }
+      for (var i = 0; i < parseInt(num / 1000); i++) {
+          result += obj[1000];
+      }
+      return result;
+  }
 }
