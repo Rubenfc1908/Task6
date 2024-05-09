@@ -3,6 +3,16 @@
    <script src="https://code.jquery.com/qunit/qunit-1.12.0.js"></script>
    <script src="romans.js"></script>
    <script src="tests.js"></script>
+   <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.convertIntegerToRoman && window.convertRomanToInteger) {
+      console.log("Funciones cargadas correctamente.");
+    } else {
+      console.error("Las funciones no están disponibles.");
+    }
+  });
+</script>
+
    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/qunit/qunit-1.12.0.css">
 </head>
 <body>
