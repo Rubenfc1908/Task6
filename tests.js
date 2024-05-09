@@ -13,23 +13,23 @@ test("TC-2: Test maximum valid input. convertIntegerToRoman(3999)", function(ass
 });
 
 test("TC-3: Test just below minimum valid input (invalid input). convertIntegerToRoman(0)", function(assert) {
-  assert.propEqual(convertIntegerToRoman(0), {value: 0, message: 'Out of range (1-3999)', result: false}, "TC-3");
+  assert.propEqual(convertIntegerToRoman(0), {value: "", message: 'Out of range (1-3999)', result: false}, "TC-3");
 });
 
 test("TC-4: Test just above maximum valid input (invalid input). convertIntegerToRoman(4000)", function(assert) {
-  assert.propEqual(convertIntegerToRoman(4000), {value: 0, message: 'Out of range (1-3999)', result: false}, "TC-4");
+  assert.propEqual(convertIntegerToRoman(4000), {value: "", message: 'Out of range (1-3999)', result: false}, "TC-4");
 });
 
 test("TC-5: Test with a non-integer input (string). convertIntegerToRoman(V)", function(assert) {
-  assert.propEqual(convertIntegerToRoman("V"), {value: 0, message: 'Please enter a valid integer', result: false}, "TC-5");
+  assert.propEqual(convertIntegerToRoman("V"), {value: "", message: 'Please enter a valid integer', result: false}, "TC-5");
 });
 
 test("TC-6: Test with a negative integer. convertIntegerToRoman(-1)", function(assert) {
-  assert.propEqual(convertIntegerToRoman(-1), {value: 0, message: 'Please enter a valid integer', result: false}, "TC-6");
+  assert.propEqual(convertIntegerToRoman(-1), {value: "", message: 'Please enter a valid integer', result: false}, "TC-6");
 });
 
 test("TC-7: Test with a decimal number. convertIntegerToRoman(3.14)", function(assert) {
-  assert.propEqual(convertIntegerToRoman(3.14), {value: 0, message: 'Please enter a valid integer', result: false}, "TC-7");
+  assert.propEqual(convertIntegerToRoman(3.14), {value: "", message: 'Please enter a valid integer', result: false}, "TC-7");
 });
 
 // Tests for convertRomanToInteger(roman)
