@@ -1,3 +1,27 @@
+const puppeteer = require('puppeteer');
+
+(async () => {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto(`file://${__dirname}/test.html`, { waitUntil: 'networkidle0' });
+
+    // Capturar los resultados de QUnit desde la consola del navegador
+    page.on('console', msg => console.log('PAGE LOG:', msg.text()));
+
+    await page.waitForFunction(() => QUnit.config.done); // Esperar hasta que QUnit reporte que ha terminado
+
+    const testResults = await page.evaluate(() => {
+        return QUnit.config.stats; // Obtiene estadísticas de los resultados de las pruebas
+    });
+
+    console.log(testResults);
+    await browser.close();
+
+    // Cerrar el proceso con un código de salida basado en si alguna prueba falló
+    process.exit(testResults.failed === 0 ? 0 : 1);
+})();
+
+
 // test("Example", function(assert) {
 //   assert.propEqual(convertRomanToInteger("I"), {value: 1, message: '', result: true}, "TC-1");
 // });
