@@ -19,20 +19,21 @@ function init() {
   }
 
   convertButton.addEventListener('click', function() {
-  var inputValue = inputArea.value;
-  var conversion = modeCheckbox.checked ? convertIntegerToRoman(inputValue) : convertRomanToInteger(inputValue);
-  if (conversion.result) {
-    outputArea.innerHTML = conversion.value;
-    gtag('event', 'conversion', {
-      'event_category': modeCheckbox.checked ? 'Integer to Roman' : 'Roman to Integer',
-      'event_label': inputValue,
-      'value': conversion.value
-    });
-  } else {
-    alert(conversion.message);
-  }
-});
-
+    var inputValue = inputArea.value;
+    var conversion = modeCheckbox.checked ? convertIntegerToRoman(inputValue) : convertRomanToInteger(inputValue);
+    if (conversion.result) {
+      outputArea.innerHTML = conversion.value;
+      // Enviar evento a Google Analytics
+      gtag('event', 'conversion', {
+        'event_category': modeCheckbox.checked ? 'Integer to Roman' : 'Roman to Integer',
+        'event_label': inputValue,
+        'value': conversion.value
+      });
+    } else {
+      alert(conversion.message);
+    }
+  });
+}
 
 function convertRomanToInteger(roman) {
   var response = {
