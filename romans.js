@@ -1,3 +1,6 @@
+/* eslint-env browser */
+/* global gtag */
+
 // Constants for the literals
 var INVALID_ROMAN = 'Please enter a valid roman';
 var INVALID_INTEGER = 'Please enter a valid integer';
@@ -23,6 +26,12 @@ function init() {
     var conversion = modeCheckbox.checked ? convertIntegerToRoman(inputValue) : convertRomanToInteger(inputValue);
     if (conversion.result) {
       outputArea.innerHTML = conversion.value;
+      // Enviar evento a Google Analytics
+      gtag('event', 'conversion', {
+        'event_category': modeCheckbox.checked ? 'Integer to Roman' : 'Roman to Integer',
+        'event_label': inputValue,
+        'value': conversion.value
+      });
     } else {
       alert(conversion.message);
     }
