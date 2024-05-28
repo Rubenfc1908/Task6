@@ -26,7 +26,7 @@ function init() {
     if (conversion.result) {
       outputArea.innerHTML = conversion.value;
       // Enviar evento a Google Analytics
-      gtag('event', 'conversion', {
+      gtag('event', 'NumOfconversions', {
         'event_category': modeCheckbox.checked ? 'Integer to Roman' : 'Roman to Integer',
         'event_label': modeCheckbox.checked ? 'Integer Conversion' : 'Roman Conversion',
         'value': conversion.value
