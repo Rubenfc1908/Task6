@@ -1,4 +1,3 @@
-/* eslint-env browser */
 /* global gtag */
 
 // Constants for the literals
