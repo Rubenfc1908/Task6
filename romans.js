@@ -28,7 +28,7 @@ function init() {
       // Enviar evento a Google Analytics
       gtag('event', 'conversion', {
         'event_category': modeCheckbox.checked ? 'Integer to Roman' : 'Roman to Integer',
-        'event_label': inputValue,
+        'event_label': modeCheckbox.checked ? 'Integer Conversion' : 'Roman Conversion',
         'value': conversion.value
       });
     } else {
